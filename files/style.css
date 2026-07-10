@@ -62,6 +62,8 @@ button:disabled { opacity: 0.4; }
 
 button.active { background: #e33; color: #fff; }
 
+button.danger { background: #f6c8c8; }
+
 .exname {
   flex-basis: 100%;
   text-align: center;

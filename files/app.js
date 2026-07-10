@@ -5,7 +5,7 @@
 const STORAGE_KEY = 'flashapp_state_v1';
 
 function defaultState() {
-  return { view: { page: 'topics' }, pins: [], openTopic: null, exercises: {}, log: [] };
+  return { view: { page: 'topics' }, pins: [], openTopic: null, exercises: {}, log: [], logResetAt: '' };
 }
 
 function loadState() {
@@ -106,8 +106,12 @@ function mergeStates(local, remote) {
     if (a && b) merged.exercises[k] = ((b.lastStudied || '') > (a.lastStudied || '')) ? b : a;
     else merged.exercises[k] = a || b;
   }
+  // a stats reset on any device wins over older history everywhere
+  merged.logResetAt = ((local.logResetAt || '') > (remote.logResetAt || ''))
+    ? (local.logResetAt || '') : (remote.logResetAt || '');
   const seen = {};
   merged.log = (local.log || []).concat(remote.log || []).filter(function (e) {
+    if (e.t <= merged.logResetAt) return false;
     const id = e.t + '|' + e.type + '|' + (e.file || '');
     if (seen[id]) return false;
     seen[id] = 1;
@@ -412,10 +416,26 @@ function showStats() {
     '<table class="stats"><tr><th>Cvičení</th><th>Pokrok</th><th>Kola</th><th>Naposledy</th></tr>' + rowsHtml + '</table>' +
     '<h2>Historie</h2>' +
     '<table class="stats"><tr><th>Kdy</th><th>Cvičení</th><th>Událost</th></tr>' + logHtml + '</table>' +
+    '<button id="statsReset" class="danger">Reset stats</button>' +
     '<h2>Synchronizace</h2>' + syncHtml +
     '<button class="exit">Exit</button>' +
     '</div>';
   ov.querySelector('.exit').onclick = function () { ov.remove(); };
+  ov.querySelector('#statsReset').onclick = function () {
+    if (!confirm('Opravdu smazat veškerý pokrok všech cvičení a celou historii učení?')) return;
+    const now = new Date().toISOString();
+    state.log = [];
+    state.logResetAt = now;
+    Object.keys(state.exercises).forEach(function (k) {
+      state.exercises[k] = {
+        learned: [], visible: [], noteOpen: [], rounds: 0,
+        total: state.exercises[k].total || 0, lastStudied: now
+      };
+    });
+    saveState();
+    ov.remove();
+    refreshAfterSync();
+  };
   const syncGo = ov.querySelector('#syncGo');
   if (syncGo) syncGo.onclick = async function () {
     const tok = ov.querySelector('#syncToken').value;
