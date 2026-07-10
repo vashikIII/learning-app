@@ -49,7 +49,10 @@
       zobrazené (uměli jste je), zmizí a v dalším kole zůstanou jen ty, které neumíte.</li>
   <li>Opakujte, dokud nezbude nic — cvičení je na 100 %.</li>
 </ol>
-<p>Pokrok v procentech = naučené řádky ÷ všechny řádky.</p>
+<p>Pokrok v procentech = řádky, které umíte, ÷ všechny řádky. Počítá se průběžně: jakmile
+necháte odpověď zobrazenou, procento v záhlaví se hned zvýší; když odpověď zase skryjete
+(neuměli jste ji), procento klesne zpět. Stejné číslo vidíte u cvičení v seznamu témat
+i na stránce Stats.</p>
 
 <h2>Poznámky (třetí sloupec)</h2>
 <p>Pokud má řádek poznámku, třetí úzký sloupec má <span class="green">světle zelené pozadí</span>.
@@ -108,10 +111,12 @@ uvozovkami nebo více řádky musí být v uvozovkách <code>"…"</code>.</p>
 <p>Drobné opravy v CSV lze dělat přímo na github.com: otevřete soubor, klepněte na tužku,
 upravte a uložte (Commit). Web se do minuty sám aktualizuje.</p>
 
-<h2>Spuštění</h2>
+<h2>Spuštění a heslo</h2>
 <p>Aplikace musí běžet přes web server (Vercel, GitHub Pages, nebo lokálně např.
 <code>python3 -m http.server</code> ve složce aplikace). Při otevření souboru
 <code>learn.html</code> přímo z disku (file://) prohlížeč nedovolí načíst data.</p>
+<p>Při otevření se aplikace zeptá na heslo. Platí po celou dobu otevřeného prohlížeče;
+po jeho zavření se při dalším otevření aplikace zeptá znovu.</p>
 
 <a class="back" href="../learn.html">← Zpět do aplikace</a>
 
