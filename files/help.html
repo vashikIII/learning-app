@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nápověda — Learn</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+         font-size: 17px; line-height: 1.5; max-width: 760px; margin: 0 auto; padding: 16px; color: #000; }
+  h1 { background: #ffff33; border: 2px solid #000; padding: 10px; text-align: center; }
+  h2 { margin-top: 28px; border-bottom: 2px solid #000; padding-bottom: 4px; }
+  code, pre { background: #eee; padding: 2px 6px; border-radius: 4px; }
+  pre { padding: 10px; overflow-x: auto; }
+  .green { background: #dcead2; padding: 0 6px; }
+  a.back { display: inline-block; margin: 12px 0; font-size: 18px; }
+</style>
+</head>
+<body>
+
+<a class="back" href="../learn.html">← Zpět do aplikace</a>
+
+<h1>Nápověda</h1>
+
+<h2>Co aplikace dělá</h2>
+<p>Aplikace slouží k učení pomocí kartiček (otázka → odpověď). Témata jsou složky ve složce
+<code>data</code>, každé téma obsahuje jedno nebo více cvičení (CSV soubory) a volitelně složku
+<code>Pic</code> s obrázky s vysvětlením.</p>
+
+<h2>První stránka — témata</h2>
+<ul>
+  <li>Zobrazuje všechna témata (názvy složek, podtržítka <code>_</code> se zobrazují jako mezery).</li>
+  <li>Klepnutím na téma se rozbalí seznam jeho cvičení s procentem naučení, např.
+      <code>Axa_sklonovani_clen_urcity_1 (70%)</code>. Klepnutím na cvičení se otevře stránka učení.</li>
+  <li><b>Stats</b> — zobrazí přehled učení: pokrok všech cvičení, počet kol, datum posledního učení
+      a historii posledních událostí.</li>
+  <li><b>Pin</b> — zapne „režim připínání“ (tlačítko zčervená). V tomto režimu klepnutím na téma
+      téma připnete nahoru (📌), dalším klepnutím odepnete. Opětovným stiskem tlačítka Pin režim ukončíte.</li>
+  <li><b>Help</b> — otevře tuto nápovědu.</li>
+</ul>
+
+<h2>Stránka cvičení — jak se učit</h2>
+<ol>
+  <li>Vidíte první sloupec (otázku). Druhý sloupec (odpověď) je skrytý.</li>
+  <li>Klepnutím na skrytou odpověď ji zobrazíte. <b>Pokud jste odpověď věděli, nechte ji zobrazenou.</b>
+      Pokud ne, klepněte znovu a odpověď se opět skryje.</li>
+  <li>Až projdete celý seznam, stiskněte dole tlačítko <b>Next round</b>. Řádky, které jste nechali
+      zobrazené (uměli jste je), zmizí a v dalším kole zůstanou jen ty, které neumíte.</li>
+  <li>Opakujte, dokud nezbude nic — cvičení je na 100 %.</li>
+</ol>
+<p>Pokrok v procentech = naučené řádky ÷ všechny řádky.</p>
+
+<h2>Poznámky (třetí sloupec)</h2>
+<p>Pokud má řádek poznámku, třetí úzký sloupec má <span class="green">světle zelené pozadí</span>.
+Klepnutím na něj se poznámka rozbalí přes celý řádek, dalším klepnutím se opět sbalí.</p>
+
+<h2>Tlačítka na stránce cvičení</h2>
+<ul>
+  <li><b>Back</b> — návrat na seznam témat.</li>
+  <li><b>Reset</b> — smaže pokrok tohoto cvičení, začnete znovu od 0 % (aplikace se předtím zeptá).</li>
+  <li><b>Pin</b> — připne/odepne toto téma na první stránce.</li>
+  <li><b>Pic</b> — zobrazí obrázky s vysvětlením ze složky <code>Pic</code> daného tématu.
+      Při jednom obrázku je k dispozici tlačítko <b>Exit</b>, při více obrázcích také
+      <b>Back</b> a <b>Forward</b> pro listování.</li>
+</ul>
+
+<h2>Ukládání stavu</h2>
+<p>Aplikace si pamatuje vše (pokrok, rozdělané kolo, připnutá témata, poslední otevřenou stránku,
+historii) v úložišti prohlížeče (localStorage). Po opětovném otevření pokračujete přesně tam, kde
+jste skončili.</p>
+<p><b>Pozor:</b> úložiště je vázané na konkrétní prohlížeč a konkrétní webovou adresu. Pokrok na
+adrese u Vercelu a na druhém hostingu jsou tedy oddělené. Smazáním dat prohlížeče se pokrok smaže.</p>
+
+<h2>Formát dat</h2>
+<p>Struktura složek (vedle <code>learn.html</code>):</p>
+<pre>data/
+  Nazev_tematu/            ← podtržítka místo mezer
+    Nazev_tematu_1.csv
+    Nazev_tematu_2.csv
+    Pic/
+      obrazek1.png</pre>
+<p>CSV soubor má tři sloupce: <b>otázka, odpověď, poznámka</b> (poznámka může být prázdná).
+Oddělovačem může být čárka nebo středník — aplikace ho pozná automaticky. Text s čárkami,
+uvozovkami nebo více řádky musí být v uvozovkách <code>"…"</code>.</p>
+
+<h2>Přidání nebo změna témat</h2>
+<ol>
+  <li>Přidejte/zmeňte složky a CSV soubory ve složce <code>data</code>.</li>
+  <li>Vygenerujte nový seznam témat příkazem:
+      <pre>python3 files/build_manifest.py</pre></li>
+  <li>Nahrajte změny na GitHub — web se sám znovu nasadí.</li>
+</ol>
+<p>Drobné opravy v CSV lze dělat přímo na github.com: otevřete soubor, klepněte na tužku,
+upravte a uložte (Commit). Web se do minuty sám aktualizuje.</p>
+
+<h2>Spuštění</h2>
+<p>Aplikace musí běžet přes web server (Vercel, GitHub Pages, nebo lokálně např.
+<code>python3 -m http.server</code> ve složce aplikace). Při otevření souboru
+<code>learn.html</code> přímo z disku (file://) prohlížeč nedovolí načíst data.</p>
+
+<a class="back" href="../learn.html">← Zpět do aplikace</a>
+
+</body>
+</html>

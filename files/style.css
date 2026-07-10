@@ -1,0 +1,243 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 17px;
+  background: #fff;
+  color: #000;
+}
+
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.msg {
+  padding: 24px 16px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.msg.error { color: #a00; }
+.msg code { background: #eee; padding: 2px 6px; }
+.msg.done { font-size: 24px; }
+
+/* ---------- Header ---------- */
+
+.header {
+  background: #ffff33;
+  border: 2px solid #000;
+  padding: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+button, a.btn {
+  font-size: 17px;
+  min-height: 44px;
+  min-width: 70px;
+  padding: 8px 14px;
+  border: 1px solid #000;
+  border-radius: 6px;
+  background: #f2f2f2;
+  color: #000;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button:disabled { opacity: 0.4; }
+
+button.active { background: #e33; color: #fff; }
+
+.exname {
+  flex-basis: 100%;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 4px;
+}
+
+.pinhint {
+  background: #ffe0e0;
+  padding: 8px;
+  text-align: center;
+  font-size: 15px;
+}
+
+/* ---------- Topics grid ---------- */
+
+.topics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 8px;
+  overflow-y: auto;
+}
+
+.topic {
+  min-height: 64px;
+  font-size: 18px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.topic.pinned { background: #fff6cc; }
+
+.files {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 0 8px 12px;
+  border-left: 4px solid #ccc;
+}
+
+.file {
+  justify-content: flex-start;
+  text-align: left;
+  min-height: 48px;
+  background: #eef4ff;
+}
+
+/* ---------- Exercise table ---------- */
+
+.tablewrap {
+  flex: 1;
+  overflow-y: scroll;
+  min-height: 0;
+}
+
+/* wide scrollbar, ~1 cm, comfortable for a finger */
+.tablewrap::-webkit-scrollbar { width: 38px; }
+.tablewrap::-webkit-scrollbar-track { background: #eee; }
+.tablewrap::-webkit-scrollbar-thumb {
+  background: #c4d4e8;
+  border: 1px solid #8899aa;
+  border-radius: 8px;
+}
+
+.extable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.extable td {
+  border: 1px solid #000;
+  padding: 10px 8px;
+  vertical-align: middle;
+  word-wrap: break-word;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+td.q { width: 48%; }
+
+td.a {
+  cursor: pointer;
+  background: #fafafa;
+}
+
+td.a.shown { background: #fff; }
+
+/* note column ~1 cm wide */
+td.n {
+  width: 38px;
+  min-width: 38px;
+  cursor: pointer;
+}
+
+td.n.hasnote { background: #dcead2; }
+
+tr.noterow td.notecell {
+  background: #dcead2;
+  text-align: center;
+  cursor: pointer;
+  white-space: pre-wrap;
+}
+
+.roundbar {
+  padding: 14px 8px 40px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+#btnNext { font-weight: bold; min-height: 52px; min-width: 160px; }
+
+.counter { font-size: 15px; color: #444; }
+
+/* ---------- Overlays (stats, pictures) ---------- */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.98);
+  z-index: 10;
+  overflow-y: auto;
+}
+
+.overlay .panel { padding: 12px; }
+
+.overlay h2 { margin: 12px 0 8px; }
+
+table.stats {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+table.stats th, table.stats td {
+  border: 1px solid #999;
+  padding: 6px;
+  text-align: left;
+}
+
+.overlay .exit { margin: 12px 0; }
+
+.picview {
+  background: rgba(0, 0, 0, 0.97);
+  display: flex;
+  flex-direction: column;
+}
+
+.picbar {
+  padding: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.picbar .counter { color: #fff; }
+
+.picholder {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.picholder img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  background: #fff;
+}
