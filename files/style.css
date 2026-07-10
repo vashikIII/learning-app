@@ -232,6 +232,20 @@ table.stats th, table.stats td {
 
 .overlay .exit { margin: 12px 0; }
 
+.synchelp { padding-left: 22px; margin: 8px 0; }
+.synchelp li { margin-bottom: 6px; }
+
+.syncrow { display: flex; gap: 8px; margin: 8px 0; }
+
+.syncrow input {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+  padding: 8px;
+  border: 2px solid #000;
+  border-radius: 6px;
+}
+
 .picview {
   background: rgba(0, 0, 0, 0.97);
   display: flex;

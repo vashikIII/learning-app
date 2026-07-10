@@ -19,7 +19,9 @@ function loadState() {
 const state = loadState();
 
 function saveState() {
+  state.savedAt = new Date().toISOString();
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  schedulePush();
 }
 
 let manifest = null;
@@ -48,8 +50,165 @@ function progressOf(topic, file) {
 
 function logEvent(type, topic, file, extra) {
   state.log.push(Object.assign({ t: new Date().toISOString(), type: type, topic: topic, file: file }, extra || {}));
-  if (state.log.length > 500) state.log = state.log.slice(-500);
+  if (state.log.length > 300) state.log = state.log.slice(-300);
 }
+
+/* ================= Cross-device sync (GitHub Gist) ================= */
+
+const GIST_FILENAME = 'flashapp_progress.json';
+const SYNC_KEY = 'flashapp_sync_v1';
+
+let sync = loadSyncCfg();
+let pushTimer = null;
+let lastPullAt = 0;
+
+function loadSyncCfg() {
+  try {
+    const s = JSON.parse(localStorage.getItem(SYNC_KEY));
+    if (s && s.token && s.gistId) return s;
+  } catch (e) {}
+  return null;
+}
+
+function saveSyncCfg() {
+  if (sync) localStorage.setItem(SYNC_KEY, JSON.stringify(sync));
+  else localStorage.removeItem(SYNC_KEY);
+}
+
+function gh(path, opts, token) {
+  opts = opts || {};
+  opts.headers = Object.assign({
+    'Authorization': 'token ' + (token || sync.token),
+    'Accept': 'application/vnd.github+json'
+  }, opts.headers || {});
+  return fetch('https://api.github.com' + path, opts);
+}
+
+/* Merge two saved states: per exercise the more recently studied one wins;
+   view/pins come from the overall newer state; history logs are combined. */
+function mergeStates(local, remote) {
+  if (!remote || typeof remote !== 'object' || !remote.exercises) return local;
+  const rNewer = (remote.savedAt || '') > (local.savedAt || '');
+  const newer = rNewer ? remote : local;
+  const merged = {
+    view: newer.view || { page: 'topics' },
+    openTopic: newer.openTopic || null,
+    pins: (newer.pins || []).slice(),
+    exercises: {},
+    log: [],
+    savedAt: newer.savedAt || ''
+  };
+  const keys = {};
+  Object.keys(local.exercises || {}).forEach(function (k) { keys[k] = 1; });
+  Object.keys(remote.exercises || {}).forEach(function (k) { keys[k] = 1; });
+  for (const k of Object.keys(keys)) {
+    const a = (local.exercises || {})[k], b = (remote.exercises || {})[k];
+    if (a && b) merged.exercises[k] = ((b.lastStudied || '') > (a.lastStudied || '')) ? b : a;
+    else merged.exercises[k] = a || b;
+  }
+  const seen = {};
+  merged.log = (local.log || []).concat(remote.log || []).filter(function (e) {
+    const id = e.t + '|' + e.type + '|' + (e.file || '');
+    if (seen[id]) return false;
+    seen[id] = 1;
+    return true;
+  }).sort(function (x, y) { return x.t < y.t ? -1 : 1; }).slice(-300);
+  return merged;
+}
+
+function applyState(merged) {
+  Object.keys(state).forEach(function (k) { delete state[k]; });
+  Object.assign(state, defaultState(), merged);
+  saveState();
+}
+
+async function pullSync() {
+  if (!sync) return false;
+  lastPullAt = Date.now();
+  const r = await gh('/gists/' + sync.gistId);
+  if (!r.ok) return false;
+  const g = await r.json();
+  const f = g.files && g.files[GIST_FILENAME];
+  if (!f) return false;
+  let content = f.content;
+  if (f.truncated) content = await (await fetch(f.raw_url)).text();
+  let remote = null;
+  try { remote = JSON.parse(content); } catch (e) { return false; }
+  const before = JSON.stringify(state);
+  const merged = mergeStates(JSON.parse(before), remote);
+  if (JSON.stringify(merged) === before) return false;
+  applyState(merged);
+  sync.lastSync = new Date().toISOString();
+  saveSyncCfg();
+  return true;  // state changed
+}
+
+function schedulePush() {
+  if (!sync) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(function () { pushSync(false); }, 2000);
+}
+
+async function pushSync(useKeepalive) {
+  if (!sync) return;
+  clearTimeout(pushTimer);
+  pushTimer = null;
+  try {
+    const payload = { files: {} };
+    payload.files[GIST_FILENAME] = { content: JSON.stringify(state) };
+    const r = await gh('/gists/' + sync.gistId, {
+      method: 'PATCH',
+      body: JSON.stringify(payload),
+      keepalive: !!useKeepalive
+    });
+    if (r.ok) {
+      sync.lastSync = new Date().toISOString();
+      saveSyncCfg();
+    }
+  } catch (e) { /* offline — will retry on next change */ }
+}
+
+async function connectSync(token) {
+  token = token.trim();
+  const r = await gh('/gists?per_page=100', {}, token);
+  if (r.status === 401) throw new Error('auth');
+  if (!r.ok) throw new Error('http');
+  const gists = await r.json();
+  const found = gists.find(function (g) { return g.files && g.files[GIST_FILENAME]; });
+  if (found) {
+    sync = { token: token, gistId: found.id, lastSync: null };
+    saveSyncCfg();
+    await pullSync();
+  } else {
+    const payload = { description: 'Learning app progress (auto-synced)', public: false, files: {} };
+    payload.files[GIST_FILENAME] = { content: JSON.stringify(state) };
+    const cr = await gh('/gists', { method: 'POST', body: JSON.stringify(payload) }, token);
+    if (!cr.ok) throw new Error('create');
+    sync = { token: token, gistId: (await cr.json()).id, lastSync: new Date().toISOString() };
+    saveSyncCfg();
+  }
+}
+
+function refreshAfterSync() {
+  if (state.view && state.view.page === 'exercise') {
+    const t = topicByFolder(state.view.topic);
+    if (t && t.files.indexOf(state.view.file) !== -1) {
+      openExercise(state.view.topic, state.view.file);
+      return;
+    }
+  }
+  cur = null;
+  showTopics();
+}
+
+document.addEventListener('visibilitychange', function () {
+  if (!sync) return;
+  if (document.visibilityState === 'hidden') {
+    if (pushTimer) pushSync(true);   // flush pending save before leaving
+  } else if (Date.now() - lastPullAt > 60000) {
+    pullSync().then(function (changed) { if (changed) refreshAfterSync(); }).catch(function () {});
+  }
+});
 
 /* ================= CSV ================= */
 
@@ -126,6 +285,12 @@ async function init() {
       'Aplikace musí běžet přes web server (ne přímo ze souboru file://).<br>' +
       'Manifest vygenerujete příkazem:<br><code>python3 files/build_manifest.py</code></div>';
     return;
+  }
+  if (sync) {
+    // merge remote progress before showing anything; don't block forever when offline
+    try {
+      await Promise.race([pullSync(), new Promise(function (res) { setTimeout(res, 5000); })]);
+    } catch (e) {}
   }
   if (state.view && state.view.page === 'exercise') {
     const t = topicByFolder(state.view.topic);
@@ -225,6 +390,21 @@ function showStats() {
   }
   if (!logHtml) logHtml = '<tr><td colspan="3">Prázdná historie.</td></tr>';
 
+  let syncHtml;
+  if (sync) {
+    const last = sync.lastSync ? sync.lastSync.slice(0, 16).replace('T', ' ') : '—';
+    syncHtml = '<p>Připojeno ✓ — poslední synchronizace: ' + last + '</p>' +
+      '<button id="syncOff">Odpojit</button>';
+  } else {
+    syncHtml = '<p>Pokrok se může automaticky synchronizovat mezi zařízeními přes váš účet GitHub:</p>' +
+      '<ol class="synchelp">' +
+      '<li><a href="https://github.com/settings/tokens/new?scopes=gist&amp;description=Learning%20app%20sync" target="_blank">Vytvořte token</a> — na otevřené stránce jen klepněte dole na zelené <b>Generate token</b> a token zkopírujte.</li>' +
+      '<li>Vložte ho sem a klepněte na Připojit:</li></ol>' +
+      '<div class="syncrow"><input id="syncToken" placeholder="ghp_…">' +
+      '<button id="syncGo">Připojit</button></div>';
+  }
+  syncHtml += '<div id="syncMsg" class="pwmsg"></div>';
+
   const ov = document.createElement('div');
   ov.className = 'overlay';
   ov.innerHTML = '<div class="panel">' +
@@ -232,9 +412,33 @@ function showStats() {
     '<table class="stats"><tr><th>Cvičení</th><th>Pokrok</th><th>Kola</th><th>Naposledy</th></tr>' + rowsHtml + '</table>' +
     '<h2>Historie</h2>' +
     '<table class="stats"><tr><th>Kdy</th><th>Cvičení</th><th>Událost</th></tr>' + logHtml + '</table>' +
+    '<h2>Synchronizace</h2>' + syncHtml +
     '<button class="exit">Exit</button>' +
     '</div>';
   ov.querySelector('.exit').onclick = function () { ov.remove(); };
+  const syncGo = ov.querySelector('#syncGo');
+  if (syncGo) syncGo.onclick = async function () {
+    const tok = ov.querySelector('#syncToken').value;
+    const msg = ov.querySelector('#syncMsg');
+    if (!tok.trim()) { msg.textContent = 'Vložte token.'; return; }
+    syncGo.disabled = true;
+    msg.textContent = 'Připojuji…';
+    try {
+      await connectSync(tok);
+      msg.textContent = 'Připojeno ✓';
+      setTimeout(function () { ov.remove(); refreshAfterSync(); }, 800);
+    } catch (e) {
+      syncGo.disabled = false;
+      msg.textContent = (e.message === 'auth') ? 'Neplatný token.' : 'Připojení se nezdařilo. Zkuste to znovu.';
+    }
+  };
+  const syncOff = ov.querySelector('#syncOff');
+  if (syncOff) syncOff.onclick = function () {
+    if (!confirm('Odpojit synchronizaci na tomto zařízení? (Uložený pokrok na GitHubu zůstane.)')) return;
+    sync = null;
+    saveSyncCfg();
+    ov.remove();
+  };
   document.body.appendChild(ov);
 }
 
