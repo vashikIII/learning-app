@@ -71,7 +71,7 @@ ty krátké adresy (2.p.),der kurzen Adressen,
 ty krátké adresy (3.p.),den kurzen Adressen,
 ty krátké adresy (4.p.),die kurzen Adressen,
 to červené jablko (1.p.),der rote Apfel,
-to červené jablko (2.p.),des roten Apfels,"""Apfel"" patří mezi podstatná jména, kde se genitiv tvoří pouhým přidáním ""-s"" (nikoli ""-es""), protože slovo už končí na ""-el"". Stejně jako ""des Onkels"", ""des Mantels"""
+to červené jablko (2.p.),des roten Apfels, Apfel patří mezi podstatná jména kde se genitiv tvoří pouhým přidáním "-s""(nikoli ""-es"") protože slovo už končí na ""-el""
 to červené jablko (3.p.),dem roten Apfel,
 to červené jablko (4.p.),den roten Apfel,
 ty staré jablka (1.p.),die alten Äpfel,
@@ -95,8 +95,7 @@ ty staré otázky (2.p.),der alten Fragen,
 ty staré otázky (3.p.),den alten Fragen,
 ty staré otázky (4.p.),die alten Fragen,
 ten mladý učitel (1.p.),der junge Lehrer,
-ten mladý učitel (2.p.),des jungen Lehrers,"""Apfel"" patří mezi podstatná jména, kde se genitiv tvoří pouhým přidáním ""-s"" (nikoli ""-es""), protože slovo už končí na ""-el"". Stejně jako ""des Onkels"", ""des Mantels"".Ze stejného důvodu – ""Lehrer"" končí na ""-er"", genitiv se tvoří jen přidáním ""-s"": ""des Lehrers"", ne ""Lehreres""
-"
+ten mladý učitel (2.p.),des jungen Lehrers, "Lehrer končí na -er genitiv se tvoří jen přidáním -s des Lehrers "
 ten mladý učitel (3.p.),dem jungen Lehrer,
 ten mladý učitel (4.p.),den jungen Lehrer,
 ti staří učitelé (1.p.),die alten Lehrer,

@@ -45,7 +45,9 @@ function getEx(topic, file, total) {
 function progressOf(topic, file) {
   const ex = state.exercises[exKey(topic, file)];
   if (!ex || !ex.total) return 0;
-  return Math.round(ex.learned.length / ex.total * 100);
+  // rows answered correctly in finished rounds + rows currently left revealed (= known)
+  const known = ex.learned.length + (ex.visible ? ex.visible.length : 0);
+  return Math.round(known / ex.total * 100);
 }
 
 function logEvent(type, topic, file, extra) {
