@@ -1,0 +1,32 @@
+name: Update manifest
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Regenerate manifest.json
+        run: python3 files/build_manifest.py
+
+      - name: Commit manifest if changed
+        run: |
+          if ! git diff --quiet files/manifest.json; then
+            git config user.name "manifest-bot"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add files/manifest.json
+            git commit -m "Auto-update manifest.json"
+            git push
+          else
+            echo "Manifest unchanged."
+          fi
