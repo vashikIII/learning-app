@@ -1,0 +1,97 @@
+﻿Čeština,Němčina,Vysvětlení
+drahý čaj (1.p.-bez členu),teurer Tee,Adjektivum 'teuer' vypouští před koncovkou prostřední 'e' kmene (teuer -> teur-)
+drahý čaj (2.p.-bez členu),teuren Tees,"Genitiv maskulina bez členu: adjektivum -en, podstatné jméno přibírá -s"
+drahý čaj (3.p.-bez členu),teurem Tee,Dativ maskulina bez členu: adjektivum má koncovku -em (napodobuje člen 'dem')
+drahý čaj (4.p.-bez členu),teuren Tee,Akuzativ maskulina bez členu: adjektivum -en
+drahé čaje (1.p.-bez členu),teure Tees,Plurál: adjektivum má koncovku -e ve všech rodech v nominativu
+drahé čaje (2.p.-bez členu),teurer Tees,Genitiv plurálu: adjektivum -er (napodobuje 'der')
+drahé čaje (3.p.-bez členu),teuren Tees,"Dativ plurálu: adjektivum -en, podstatné jméno již má -s"
+drahé čaje (4.p.-bez členu),teure Tees,Akuzativ plurálu shodný s nominativem
+tmavé pivo (1.p.-bez členu),dunkles Bier,Adjektivum 'dunkel' vypouští prostřední 'e' (dunkel -> dunkl-); neutrum má koncovku -es
+tmavé pivo (2.p.-bez členu),dunklen Biers,"Genitiv neutra bez členu: adjektivum -en, podstatné jméno -s"
+tmavé pivo (3.p.-bez členu),dunklem Bier,Dativ neutra bez členu: adjektivum -em
+tmavé pivo (4.p.-bez členu),dunkles Bier,Akuzativ neutra shodný s nominativem
+tmavá piva (1.p.-bez členu),dunkle Biere,Plurál: adjektivum -e
+tmavá piva (2.p.-bez členu),dunkler Biere,Genitiv plurálu: adjektivum -er
+tmavá piva (3.p.-bez členu),dunklen Bieren,"Dativ plurálu: adjektivum -en, podstatné jméno přibírá -n"
+tmavá piva (4.p.-bez členu),dunkle Biere,Akuzativ plurálu shodný s nominativem
+vysoký strom (1.p.-bez členu),hoher Baum,Adjektivum 'hoch' mění kmen na 'hoh-' při jakékoli koncovce
+vysoký strom (2.p.-bez členu),hohen Baumes,"Genitiv maskulina: adjektivum -en, podstatné jméno -es"
+vysoký strom (3.p.-bez členu),hohem Baum,Dativ maskulina: adjektivum -em
+vysoký strom (4.p.-bez členu),hohen Baum,Akuzativ maskulina: adjektivum -en
+vysoké stromy (1.p.-bez členu),hohe Bäume,Plurál podstatného jména s přehláskou (Baum -> Bäume)
+vysoké stromy (2.p.-bez členu),hoher Bäume,Genitiv plurálu: adjektivum -er
+vysoké stromy (3.p.-bez členu),hohen Bäumen,Dativ plurálu: podstatné jméno přibírá -n
+vysoké stromy (4.p.-bez členu),hohe Bäume,Akuzativ plurálu shodný s nominativem
+tichá hudba (1.p.-bez členu),leise Musik,"Adjektivum 'leise' už končí na -e, koncovka se nezdvojuje"
+tichá hudba (2.p.-bez členu),leiser Musik,Genitiv feminina bez členu: adjektivum -er
+tichá hudba (3.p.-bez členu),leiser Musik,Dativ feminina má stejný tvar jako genitiv: -er
+tichá hudba (4.p.-bez členu),leise Musik,Akuzativ feminina shodný s nominativem
+růžové šaty (1.p.-bez členu),rosa Kleid,"Barevné adjektivum 'rosa' je nesklonné, zůstává ve stejném tvaru ve všech pádech"
+růžové šaty (2.p.-bez členu),rosa Kleides,"Nesklonné 'rosa' se nemění, skloňuje se pouze podstatné jméno (-es)"
+růžové šaty (3.p.-bez členu),rosa Kleid,Nesklonné 'rosa' se nemění ani v dativu
+růžové šaty (4.p.-bez členu),rosa Kleid,"Akuzativ shodný s nominativem, 'rosa' beze změny"
+růžové šaty (1.p.-mn.č.),rosa Kleider,Nesklonné 'rosa' zůstává stejné i v plurálu
+růžové šaty (2.p.-mn.č.),rosa Kleider,"Genitiv plurálu neutra 'Kleider' se nemění, 'rosa' beze změny"
+růžové šaty (3.p.-mn.č.),rosa Kleidern,"Dativ plurálu: podstatné jméno přibírá -n, 'rosa' beze změny"
+růžové šaty (4.p.-mn.č.),rosa Kleider,Akuzativ plurálu shodný s nominativem
+starší muž (1.p.-bez členu),älterer Mann,Komparativ 'älter' (od 'alt') se skloňuje jako běžné adjektivum
+starší muž (2.p.-bez členu),älteren Mannes,"Genitiv maskulina: komparativ -en, podstatné jméno -es"
+starší muž (3.p.-bez členu),älterem Mann,Dativ maskulina: komparativ -em
+starší muž (4.p.-bez členu),älteren Mann,Akuzativ maskulina: komparativ -en
+starší muži (1.p.-bez členu),ältere Männer,"Plurál: komparativ -e, podstatné jméno s přehláskou"
+starší muži (2.p.-bez členu),älterer Männer,Genitiv plurálu: komparativ -er
+starší muži (3.p.-bez členu),älteren Männern,"Dativ plurálu: komparativ -en, podstatné jméno -n"
+starší muži (4.p.-bez členu),ältere Männer,Akuzativ plurálu shodný s nominativem
+nejvyšší hora (1.p.-bez členu),höchster Berg,Superlativ 'höchst' (od 'hoch') se skloňuje jako běžné adjektivum
+nejvyšší hora (2.p.-bez členu),höchsten Berges,"Genitiv maskulina: superlativ -en, podstatné jméno -es"
+nejvyšší hora (3.p.-bez členu),höchstem Berg,Dativ maskulina: superlativ -em
+nejvyšší hora (4.p.-bez členu),höchsten Berg,Akuzativ maskulina: superlativ -en
+nejvyšší hory (1.p.-bez členu),höchste Berge,Plurál: superlativ -e
+nejvyšší hory (2.p.-bez členu),höchster Berge,Genitiv plurálu: superlativ -er
+nejvyšší hory (3.p.-bez členu),höchsten Bergen,"Dativ plurálu: superlativ -en, podstatné jméno -n"
+nejvyšší hory (4.p.-bez členu),höchste Berge,Akuzativ plurálu shodný s nominativem
+sladké mléko (1.p.-bez členu),süße Milch,Neplurálové femininum; adjektivum 'süß' má běžnou koncovku -e
+sladké mléko (2.p.-bez členu),süßer Milch,Genitiv feminina: adjektivum -er
+sladké mléko (3.p.-bez členu),süßer Milch,Dativ feminina shodný s genitivem: -er
+sladké mléko (4.p.-bez členu),süße Milch,Akuzativ feminina shodný s nominativem
+čerstvé ovoce (1.p.-bez členu),frisches Obst,Neplurálové neutrum (Obst je hromadné podstatné jméno); adjektivum -es
+čerstvé ovoce (2.p.-bez členu),frischen Obsts,"Genitiv neutra: adjektivum -en, podstatné jméno -s"
+čerstvé ovoce (3.p.-bez členu),frischem Obst,Dativ neutra: adjektivum -em
+čerstvé ovoce (4.p.-bez členu),frisches Obst,Akuzativ neutra shodný s nominativem
+mnoho starých knih (1.p.),viele alte Bücher,Zájmeno množství 'viele' se v plurálu chová jako silné adjektivum (koncovka -e)
+mnoho starých knih (2.p.),vieler alter Bücher,Genitiv: 'viele' i následující adjektivum mají koncovku -er
+mnoho starých knih (3.p.),vielen alten Büchern,"Dativ: 'viele' i adjektivum -en, podstatné jméno -n"
+mnoho starých knih (4.p.),viele alte Bücher,Akuzativ shodný s nominativem
+několik mladých psů (1.p.),einige junge Hunde,Zájmeno množství 'einige' se skloňuje stejně jako silné adjektivum
+několik mladých psů (2.p.),einiger junger Hunde,Genitiv: 'einige' i adjektivum -er
+několik mladých psů (3.p.),einigen jungen Hunden,"Dativ: 'einige' i adjektivum -en, podstatné jméno -n"
+několik mladých psů (4.p.),einige junge Hunde,Akuzativ shodný s nominativem
+sladký med (1.p.-bez členu),süßer Honig,"Maskulinum bez členu, adjektivum má koncovku -er (napodobuje 'der')"
+sladký med (2.p.-bez členu),süßen Honigs,"Genitiv maskulina: adjektivum -en, podstatné jméno -s"
+sladký med (3.p.-bez členu),süßem Honig,Dativ maskulina: adjektivum -em
+sladký med (4.p.-bez členu),süßen Honig,Akuzativ maskulina: adjektivum -en
+sladké medy (1.p.-bez členu),süße Honige,"Plurál: adjektivum -e (vzácný, ale gramaticky platný tvar)"
+sladké medy (2.p.-bez členu),süßer Honige,Genitiv plurálu: adjektivum -er
+sladké medy (3.p.-bez členu),süßen Honigen,"Dativ plurálu: adjektivum -en, podstatné jméno -n"
+sladké medy (4.p.-bez členu),süße Honige,Akuzativ plurálu shodný s nominativem
+nejlepší přítel (1.p.-bez členu),bester Freund,Superlativ 'best' (od 'gut') se skloňuje jako běžné adjektivum
+nejlepší přítel (2.p.-bez členu),besten Freundes,"Genitiv maskulina: superlativ -en, podstatné jméno -es"
+nejlepší přítel (3.p.-bez členu),bestem Freund,Dativ maskulina: superlativ -em
+nejlepší přítel (4.p.-bez členu),besten Freund,Akuzativ maskulina: superlativ -en
+nejlepší přátelé (1.p.-bez členu),beste Freunde,Plurál: superlativ -e
+nejlepší přátelé (2.p.-bez členu),bester Freunde,Genitiv plurálu: superlativ -er
+nejlepší přátelé (3.p.-bez členu),besten Freunden,"Dativ plurálu: superlativ -en, podstatné jméno -n"
+nejlepší přátelé (4.p.-bez členu),beste Freunde,Akuzativ plurálu shodný s nominativem
+málo malých dětí (1.p.),wenige kleine Kinder,Zájmeno množství 'wenige' se skloňuje jako silné adjektivum
+málo malých dětí (2.p.),weniger kleiner Kinder,Genitiv: 'wenige' i adjektivum -er
+málo malých dětí (3.p.),wenigen kleinen Kindern,"Dativ: 'wenige' i adjektivum -en, podstatné jméno -n"
+málo malých dětí (4.p.),wenige kleine Kinder,Akuzativ shodný s nominativem
+několik nových aut (1.p.),mehrere neue Autos,Zájmeno množství 'mehrere' se skloňuje jako silné adjektivum
+několik nových aut (2.p.),mehrerer neuer Autos,Genitiv: 'mehrere' i adjektivum -er
+několik nových aut (3.p.),mehreren neuen Autos,Dativ: 'mehrere' i adjektivum -en
+několik nových aut (4.p.),mehrere neue Autos,Akuzativ shodný s nominativem
+všichni dobří lidé (1.p.),alle guten Leute,"Po 'alle' se adjektivum skloňuje slabě (koncovka -en), na rozdíl od 'viele/einige'"
+všichni dobří lidé (2.p.),aller guten Leute,"Genitiv: 'aller' je jediný silný tvar, adjektivum zůstává slabé -en"
+všichni dobří lidé (3.p.),allen guten Leuten,"Dativ: 'allen' i adjektivum -en, podstatné jméno -n"
+všichni dobří lidé (4.p.),alle guten Leute,"Akuzativ shodný s nominativem, adjektivum stále -en"
