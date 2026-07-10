@@ -1,0 +1,89 @@
+﻿Čeština,Němčina,Vysvětlení
+nějaký chlapec (1.p.),ein Junge,Nominativ - slabé mužské podstatné jméno (N-deklinace) po 'ein' má tvar bez koncovky
+nějaký chlapec (2.p.),eines Jungen,"N-deklinace: ve 2. p. přibírá -n, člen 'ein' má běžnou genitivní koncovku -es"
+nějaký chlapec (3.p.),einem Jungen,N-deklinace: koncovka -n zůstává i ve 3. p.
+nějaký chlapec (4.p.),einen Jungen,"N-deklinace: koncovka -n i ve 4. p., na rozdíl od silných maskulin"
+žádní chlapci (1.p.),keine Jungen,Na rozdíl od 'ein' má zápor 'kein' i tvary pro množné číslo
+žádní chlapci (2.p.),keiner Jungen,Genitiv plurálu záporu 'kein' má koncovku -er
+žádní chlapci (3.p.),keinen Jungen,Dativ plurálu záporu 'kein' má koncovku -en
+žádní chlapci (4.p.),keine Jungen,Akuzativ plurálu shodný s nominativem
+nějaký student (1.p.),ein Student,"Nominativ - N-deklinace, po 'ein' základní tvar bez koncovky"
+nějaký student (2.p.),eines Studenten,N-deklinace: -en místo klasického -(e)s u podstatného jména
+nějaký student (3.p.),einem Studenten,N-deklinace: koncovka -en zachována i ve 3. p.
+nějaký student (4.p.),einen Studenten,N-deklinace: koncovka -en i ve 4. p.
+žádní studenti (1.p.),keine Studenten,Plurál záporu 'kein' + podstatné jméno s koncovkou -en
+žádní studenti (2.p.),keiner Studenten,Genitiv plurálu záporu 'kein' -er
+žádní studenti (3.p.),keinen Studenten,Dativ plurálu záporu 'kein' -en
+žádní studenti (4.p.),keine Studenten,Akuzativ plurálu shodný s nominativem
+nějaký pán (1.p.),ein Herr,Nominativ - zvláštní slabé maskulinum
+nějaký pán (2.p.),eines Herrn,"'Herr' je výjimka: v jednotném čísle přibírá jen -n, ne -en"
+nějaký pán (3.p.),einem Herrn,Zvláštní tvar 'Herrn' platí i ve 3. p. jednotného čísla
+nějaký pán (4.p.),einen Herrn,Stejná výjimka -n i ve 4. p. jednotného čísla
+žádní pánové (1.p.),keine Herren,V plurálu se 'Herr' chová jako běžné slabé maskulinum s koncovkou -en
+žádní pánové (2.p.),keiner Herren,Genitiv plurálu záporu 'kein' -er
+žádní pánové (3.p.),keinen Herren,Dativ plurálu záporu 'kein' -en
+žádní pánové (4.p.),keine Herren,Akuzativ plurálu shodný s nominativem
+nějaké jméno (1.p.),ein Name,Nominativ - smíšená N-deklinace (mužský rod v němčině)
+nějaké jméno (2.p.),eines Namens,"Zvláštnost slova 'Name': v genitivu přibírá -ns, ne jen -n"
+nějaké jméno (3.p.),einem Namen,Ve 3. p. má 'Name' běžnou koncovku -n
+nějaké jméno (4.p.),einen Namen,Ve 4. p. rovněž koncovka -n
+nějaký drahý vůz (1.p.),ein teurer Wagen,Adjektivum 'teuer' vypouští před koncovkou -er prostřední 'e' kmene
+nějaký drahý vůz (2.p.),eines teuren Wagens,Vypuštění 'e' u adjektiva + koncovka -s u podstatného jména Wagen
+nějaký drahý vůz (3.p.),einem teuren Wagen,"Adjektivum má po 'ein' slabou koncovku -en, kmenové 'e' zůstává vypuštěné"
+nějaký drahý vůz (4.p.),einen teuren Wagen,Stejný princip vypuštění 'e' v akuzativu
+žádné drahé vozy (1.p.),keine teuren Wagen,"Plurál záporu 'kein': adjektivum 'teuren', Wagen beze změny (končí na -en)"
+žádné drahé vozy (2.p.),keiner teuren Wagen,"Genitiv plurálu záporu 'kein' -er, podstatné jméno beze změny"
+žádné drahé vozy (3.p.),keinen teuren Wagen,"Dativ plurálu záporu 'kein' -en, Wagen již končí na -n"
+žádné drahé vozy (4.p.),keine teuren Wagen,Akuzativ plurálu shodný s nominativem
+nějaký tmavý pokoj (1.p.),ein dunkles Zimmer,Adjektivum 'dunkel' vypouští prostřední 'e' před koncovkou -es
+nějaký tmavý pokoj (2.p.),eines dunklen Zimmers,Vypuštění 'e' u adjektiva + koncovka -s u středního rodu v genitivu
+nějaký tmavý pokoj (3.p.),einem dunklen Zimmer,Adjektivum 'dunklen' se stejným vypuštěním 'e'
+nějaký tmavý pokoj (4.p.),ein dunkles Zimmer,Střední rod: akuzativ shodný s nominativem
+žádné tmavé pokoje (1.p.),keine dunklen Zimmer,"Plurál záporu 'kein': adjektivum 'dunklen', podstatné jméno beze změny"
+žádné tmavé pokoje (2.p.),keiner dunklen Zimmer,Genitiv plurálu záporu 'kein' -er
+žádné tmavé pokoje (3.p.),keinen dunklen Zimmern,Dativ plurálu: podstatné jméno přibírá koncovku -n (Zimmern)
+žádné tmavé pokoje (4.p.),keine dunklen Zimmer,Akuzativ plurálu shodný s nominativem
+nějaká vysoká věž (1.p.),ein hoher Turm,Adjektivum 'hoch' mění kmen na 'hoh-' při jakékoli koncovce; Turm je mužského rodu
+nějaká vysoká věž (2.p.),eines hohen Turms,Stejná změna kmene 'hoh-' + koncovka -s u podstatného jména Turm
+nějaká vysoká věž (3.p.),einem hohen Turm,Adjektivum 'hohen' se stejnou změnou kmene ve 3. p.
+nějaká vysoká věž (4.p.),einen hohen Turm,"Změna kmene 'hoh-' zůstává i ve 4. p., akuzativ mužského rodu má koncovku -en"
+žádné vysoké věže (1.p.),keine hohen Türme,Plurál podstatného jména s přehláskou (Turm -> Türme)
+žádné vysoké věže (2.p.),keiner hohen Türme,Genitiv plurálu záporu 'kein' -er
+žádné vysoké věže (3.p.),keinen hohen Türmen,Dativ plurálu přibírá koncovku -n (Türmen)
+žádné vysoké věže (4.p.),keine hohen Türme,Akuzativ plurálu shodný s nominativem
+nějaká událost (1.p.),ein Ereignis,Nominativ - podstatné jméno středního rodu zakončené na -nis
+nějaká událost (2.p.),eines Ereignisses,Podstatná jména na -nis zdvojují v genitivu koncové -s
+nějaká událost (3.p.),einem Ereignis,Ve 3. p. jednotného čísla zůstává základní tvar bez koncovky
+nějaká událost (4.p.),ein Ereignis,Akuzativ středního rodu shodný s nominativem
+žádné události (1.p.),keine Ereignisse,Plurál se tvoří koncovkou -e (Ereignis -> Ereignisse)
+žádné události (2.p.),keiner Ereignisse,Genitiv plurálu záporu 'kein' -er
+žádné události (3.p.),keinen Ereignissen,"Dativ plurálu přibírá -n, zdvojené -ss zůstává"
+žádné události (4.p.),keine Ereignisse,Akuzativ plurálu shodný s nominativem
+nějaké muzeum (1.p.),ein Museum,Nominativ - neutrum cizího (latinského) původu na -um
+nějaké muzeum (2.p.),eines Museums,"Slova na -um mají v genitivu jen koncovku -s, ne -es"
+nějaké muzeum (3.p.),einem Museum,Ve 3. p. jednotného čísla se tvar nemění
+nějaké muzeum (4.p.),ein Museum,Akuzativ středního rodu shodný s nominativem
+žádná muzea (1.p.),keine Museen,Nepravidelný plurál: koncovka -um se nahrazuje -en
+žádná muzea (2.p.),keiner Museen,Genitiv plurálu záporu 'kein' -er
+žádná muzea (3.p.),keinen Museen,"Dativ plurálu: tvar už končí na -n, nic se nepřidává"
+žádná muzea (4.p.),keine Museen,Akuzativ plurálu shodný s nominativem
+nějaký otec (1.p.),ein Vater,Nominativ - silné maskulinum zakončené na -er
+nějaký otec (2.p.),eines Vaters,"Podstatná jména na -er/-el přibírají v genitivu jen -s, ne -es"
+nějaký otec (3.p.),einem Vater,Ve 3. p. jednotného čísla zůstává základní tvar
+nějaký otec (4.p.),einen Vater,Akuzativ jednotného čísla shodný s nominativem tvaru podstatného jména
+žádní otcové (1.p.),keine Väter,"Plurál se tvoří pouze přehláskou, bez přidání koncovky"
+žádní otcové (2.p.),keiner Väter,Genitiv plurálu záporu 'kein' -er
+žádní otcové (3.p.),keinen Vätern,Dativ plurálu přibírá koncovku -n (Vätern)
+žádní otcové (4.p.),keine Väter,Akuzativ plurálu shodný s nominativem
+nějaká univerzita (1.p.),eine Universität,Nominativ - pravidelné femininum na -tät
+nějaká univerzita (2.p.),einer Universität,"Feminina se v jednotném čísle nemění, mění se pouze člen"
+nějaká univerzita (3.p.),einer Universität,Dativ i genitiv feminina singuláru mají stejný tvar členu 'einer'
+nějaká univerzita (4.p.),eine Universität,Akuzativ feminina singuláru shodný s nominativem
+žádné univerzity (1.p.),keine Universitäten,Plurál se tvoří koncovkou -en
+žádné univerzity (2.p.),keiner Universitäten,Genitiv plurálu záporu 'kein' -er
+žádné univerzity (3.p.),keinen Universitäten,"Dativ plurálu: tvar už končí na -n, nic se nepřidává"
+žádné univerzity (4.p.),keine Universitäten,Akuzativ plurálu shodný s nominativem
+nějaké srdce (1.p.),ein Herz,Nominativ - nepravidelné neutrum
+nějaké srdce (2.p.),eines Herzens,'Herz' je nepravidelné: genitiv přibírá koncovku -ens
+nějaké srdce (3.p.),einem Herzen,'Herz' je nepravidelné: dativ přibírá koncovku -en
+nějaké srdce (4.p.),ein Herz,Akuzativ je na rozdíl od genitivu a dativu shodný se základním tvarem nominativu
