@@ -1,0 +1,81 @@
+﻿Čeština,Němčina,Vysvětlení
+který muž (1.p.),welcher Mann,Tázací zájmeno 'welcher' se skloňuje stejně jako 'dieser' (silná der-deklinace)
+který muž (2.p.),welches Mannes,"Genitiv maskulina: 'welches', podstatné jméno -es"
+který muž (3.p.),welchem Mann,Dativ maskulina: 'welchem'
+který muž (4.p.),welchen Mann,Akuzativ maskulina: 'welchen'
+které muže (1.p.),welche Männer,"Plurál: 'welche', podstatné jméno s přehláskou"
+které muže (2.p.),welcher Männer,Genitiv plurálu: 'welcher'
+které muže (3.p.),welchen Männern,"Dativ plurálu: 'welchen', podstatné jméno -n"
+které muže (4.p.),welche Männer,Akuzativ plurálu shodný s nominativem
+takový dům (1.p.),solches Haus,Zájmeno 'solcher' (takový) se skloňuje stejně jako 'dieser'; neutrum 'solches'
+takový dům (2.p.),solches Hauses,"Genitiv neutra: 'solches', podstatné jméno -es"
+takový dům (3.p.),solchem Haus,Dativ neutra: 'solchem'
+takový dům (4.p.),solches Haus,Akuzativ neutra shodný s nominativem
+takové domy (1.p.),solche Häuser,"Plurál: 'solche', podstatné jméno s přehláskou"
+takové domy (2.p.),solcher Häuser,Genitiv plurálu: 'solcher'
+takové domy (3.p.),solchen Häusern,"Dativ plurálu: 'solchen', podstatné jméno -n"
+takové domy (4.p.),solche Häuser,Akuzativ plurálu shodný s nominativem
+tento chlapec (1.p.),dieser Junge,'Dieser' + N-deklinace: podstatné jméno v 1. p. bez koncovky
+tento chlapec (2.p.),dieses Jungen,N-deklinace: ve 2. p. přibírá -n místo běžného -(e)s
+tento chlapec (3.p.),diesem Jungen,N-deklinace: koncovka -n zůstává i ve 3. p.
+tento chlapec (4.p.),diesen Jungen,N-deklinace: koncovka -n i ve 4. p.
+tito chlapci (1.p.),diese Jungen,Plurál N-deklinace: koncovka -n ve všech pádech
+tito chlapci (2.p.),dieser Jungen,Genitiv plurálu shodný s nominativem plurálu
+tito chlapci (3.p.),diesen Jungen,Dativ plurálu: -n je již přítomno
+tito chlapci (4.p.),diese Jungen,Akuzativ plurálu shodný s nominativem
+každý student (1.p.),jeder Student,'Jeder' existuje jen v singuláru; N-deklinace podstatného jména bez koncovky v 1.p.
+každý student (2.p.),jedes Studenten,N-deklinace: -en místo klasického -(e)s
+každý student (3.p.),jedem Studenten,N-deklinace: koncovka -en zachována i ve 3. p.
+každý student (4.p.),jeden Studenten,N-deklinace: koncovka -en i ve 4. p.
+některý pán (1.p.),mancher Herr,'Mancher' + zvláštní slabé maskulinum 'Herr'
+některý pán (2.p.),manches Herrn,"'Herr' je výjimka: v jednotném čísle přibírá jen -n, ne -en"
+některý pán (3.p.),manchem Herrn,Zvláštní tvar 'Herrn' platí i ve 3. p.
+některý pán (4.p.),manchen Herrn,Stejná výjimka -n i ve 4. p.
+někteří pánové (1.p.),manche Herren,V plurálu se 'Herr' chová jako běžné slabé maskulinum s -en
+někteří pánové (2.p.),mancher Herren,Genitiv plurálu shodný s nominativem plurálu
+někteří pánové (3.p.),manchen Herren,Dativ plurálu: -en je již přítomno
+někteří pánové (4.p.),manche Herren,Akuzativ plurálu shodný s nominativem
+toto jméno (1.p.),dieser Name,Nominativ - smíšená N-deklinace (mužský rod v němčině)
+toto jméno (2.p.),dieses Namens,"Zvláštnost slova 'Name': v genitivu přibírá -ns, ne jen -n"
+toto jméno (3.p.),diesem Namen,Ve 3. p. má 'Name' běžnou koncovku -n
+toto jméno (4.p.),diesen Namen,Ve 4. p. rovněž koncovka -n
+toto srdce (1.p.),dieses Herz,Nominativ - nepravidelné neutrum
+toto srdce (2.p.),dieses Herzens,'Herz' je nepravidelné: genitiv přibírá koncovku -ens
+toto srdce (3.p.),diesem Herzen,'Herz' je nepravidelné: dativ přibírá koncovku -en
+toto srdce (4.p.),dieses Herz,Akuzativ shodný se základním tvarem nominativu
+toto muzeum (1.p.),dieses Museum,Neutrum cizího původu na -um
+toto muzeum (2.p.),dieses Museums,"Slova na -um mají v genitivu jen koncovku -s, ne -es"
+toto muzeum (3.p.),diesem Museum,Ve 3. p. jednotného čísla se tvar nemění
+toto muzeum (4.p.),dieses Museum,Akuzativ shodný s nominativem
+tato muzea (1.p.),diese Museen,Nepravidelný plurál: koncovka -um se nahrazuje -en
+tato muzea (2.p.),dieser Museen,Genitiv plurálu shodný s nominativem plurálu
+tato muzea (3.p.),diesen Museen,"Dativ plurálu: tvar už končí na -n, nic se nepřidává"
+tato muzea (4.p.),diese Museen,Akuzativ plurálu shodný s nominativem
+tato událost (1.p.),diese Erlaubnis,"Podstatné jméno na -nis, femininum"
+tato událost (2.p.),dieser Erlaubnis,Genitiv feminina beze změny podstatného jména (jen člen se mění)
+tato událost (3.p.),dieser Erlaubnis,Dativ feminina shodný s genitivem
+tato událost (4.p.),diese Erlaubnis,Akuzativ feminina shodný s nominativem
+tento starý muž (1.p.),dieser alte Mann,"Po zájmenu 'dieser' se adjektivum skloňuje slabě (koncovka -e, napodobuje člen určitý)"
+tento starý muž (2.p.),dieses alten Mannes,"Slabé adjektivum -en, genitiv podstatného jména -es"
+tento starý muž (3.p.),diesem alten Mann,Slabé adjektivum -en i ve 3. p.
+tento starý muž (4.p.),diesen alten Mann,Slabé adjektivum -en i ve 4. p.
+tito staří muži (1.p.),diese alten Männer,Plurál: slabé adjektivum -en
+tito staří muži (2.p.),dieser alten Männer,Genitiv plurálu: adjektivum stále -en
+tito staří muži (3.p.),diesen alten Männern,"Dativ plurálu: adjektivum -en, podstatné jméno -n"
+tito staří muži (4.p.),diese alten Männer,Akuzativ plurálu shodný s nominativem
+každá mladá žena (1.p.),jede junge Frau,"Po 'jeder' se adjektivum skloňuje slabě, stejně jako po členu určitém"
+každá mladá žena (2.p.),jeder jungen Frau,Slabé adjektivum -en i v genitivu feminina
+každá mladá žena (3.p.),jeder jungen Frau,Dativ feminina shodný s genitivem
+každá mladá žena (4.p.),jede junge Frau,Akuzativ feminina shodný s nominativem
+všechny malé děti (1.p.),alle kleinen Kinder,"Po 'alle' se adjektivum skloňuje slabě (koncovka -en), na rozdíl od 'viele'"
+všechny malé děti (2.p.),aller kleinen Kinder,"Genitiv plurálu: 'aller' je silný tvar, adjektivum zůstává slabé -en"
+všechny malé děti (3.p.),allen kleinen Kindern,"Dativ plurálu: 'allen', adjektivum -en, podstatné jméno -n"
+všechny malé děti (4.p.),alle kleinen Kinder,Akuzativ plurálu shodný s nominativem
+některé staré obrázky (1.p.),manche alten Bilder,Po 'manche' v plurálu se adjektivum skloňuje slabě (koncovka -en)
+některé staré obrázky (2.p.),mancher alten Bilder,"Genitiv plurálu: 'mancher', adjektivum -en"
+některé staré obrázky (3.p.),manchen alten Bildern,"Dativ plurálu: 'manchen', adjektivum -en, podstatné jméno -n"
+některé staré obrázky (4.p.),manche alten Bilder,Akuzativ plurálu shodný s nominativem
+tento vysoký strom (1.p.),dieser hohe Baum,Adjektivum 'hoch' mění kmen na 'hoh-' i po zájmenu 'dieser'
+tento vysoký strom (2.p.),dieses hohen Baumes,"Slabé adjektivum -en se změnou kmene, genitiv podstatného jména -es"
+tento vysoký strom (3.p.),diesem hohen Baum,Slabé adjektivum -en se změnou kmene i ve 3. p.
+tento vysoký strom (4.p.),diesen hohen Baum,Slabé adjektivum -en se změnou kmene i ve 4. p.
