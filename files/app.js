@@ -400,6 +400,41 @@ function showPics(pics) {
   document.body.appendChild(ov);
 }
 
+/* ================= Password gate ================= */
+
+// SHA-256 hash of the access password; the plain password never appears in the code
+const PW_HASH = '5dde896887f6754c9b15bfe3a441ae4806df2fde94001311e08bf110622e0bbe';
+
+async function sha256hex(s) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return Array.from(new Uint8Array(buf)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+}
+
+function showLogin() {
+  app.innerHTML = '<div class="login">' +
+    '<h2>Zadejte heslo</h2>' +
+    '<input type="password" id="pw" autocomplete="current-password">' +
+    '<button id="pwBtn">OK</button>' +
+    '<div id="pwMsg" class="pwmsg"></div>' +
+    '</div>';
+  const tryPw = async function () {
+    let ok = false;
+    try { ok = (await sha256hex(el('pw').value)) === PW_HASH; } catch (e) { ok = false; }
+    if (ok) {
+      sessionStorage.setItem('flashapp_auth', '1');
+      init();
+    } else {
+      el('pwMsg').textContent = 'Špatné heslo';
+      el('pw').value = '';
+      el('pw').focus();
+    }
+  };
+  el('pwBtn').onclick = tryPw;
+  el('pw').addEventListener('keydown', function (e) { if (e.key === 'Enter') tryPw(); });
+  el('pw').focus();
+}
+
 /* ================= Go ================= */
 
-init();
+if (sessionStorage.getItem('flashapp_auth') === '1') init();
+else showLogin();
