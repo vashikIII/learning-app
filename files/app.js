@@ -237,7 +237,9 @@ function parseCSV(text) {
         if (text[i + 1] === '"') { field += '"'; i++; }
         else inQ = false;
       } else field += c;
-    } else if (c === '"') {
+    } else if (c === '"' && field === '') {
+      // a field counts as quoted only when the quote is its very first character;
+      // stray quotes inside text (hand-edited CSVs) are kept as literal characters
       inQ = true;
     } else if (c === delim) {
       row.push(field); field = '';
@@ -272,6 +274,7 @@ function niceName(folderOrFile) {
 }
 
 function dataUrl(topic, rel) {
+  if (window.OFFLINE_DATA) return OFFLINE_DATA.pics[topic + '/' + rel] || '';
   return 'data/' + encodeURIComponent(topic) + '/' + rel.split('/').map(encodeURIComponent).join('/');
 }
 
@@ -282,15 +285,19 @@ function topicByFolder(folder) {
 /* ================= Init / routing ================= */
 
 async function init() {
-  try {
-    const r = await fetch('files/manifest.json', { cache: 'no-cache' });
-    if (!r.ok) throw new Error(r.status);
-    manifest = await r.json();
-  } catch (e) {
-    app.innerHTML = '<div class="msg error">Nelze načíst <b>files/manifest.json</b>.<br>' +
-      'Aplikace musí běžet přes web server (ne přímo ze souboru file://).<br>' +
-      'Manifest vygenerujete příkazem:<br><code>python3 files/build_manifest.py</code></div>';
-    return;
+  if (window.OFFLINE_DATA) {
+    manifest = OFFLINE_DATA.manifest;
+  } else {
+    try {
+      const r = await fetch('files/manifest.json', { cache: 'no-cache' });
+      if (!r.ok) throw new Error(r.status);
+      manifest = await r.json();
+    } catch (e) {
+      app.innerHTML = '<div class="msg error">Nelze načíst <b>files/manifest.json</b>.<br>' +
+        'Aplikace musí běžet přes web server (ne přímo ze souboru file://).<br>' +
+        'Manifest vygenerujete příkazem:<br><code>python3 files/build_manifest.py</code></div>';
+      return;
+    }
   }
   if (sync) {
     // merge remote progress before showing anything; don't block forever when offline
@@ -325,7 +332,7 @@ function showTopics() {
   let html = '<div class="header">' +
     '<button id="btnStats">Stats</button>' +
     '<button id="btnPin"' + (pinMode ? ' class="active"' : '') + '>Pin</button>' +
-    '<a class="btn" href="files/help.html">Help</a>' +
+    '<a class="btn" href="' + (window.OFFLINE_DATA ? 'help.html' : 'files/help.html') + '">Help</a>' +
     '</div>';
   if (pinMode) html += '<div class="pinhint">Pin mode: klepněte na téma pro připnutí / odepnutí. Ukončíte tlačítkem Pin.</div>';
   html += '<div class="topics">';
@@ -468,14 +475,23 @@ function showStats() {
 
 async function openExercise(topic, file) {
   let text;
-  try {
-    const r = await fetch(dataUrl(topic, file), { cache: 'no-cache' });
-    if (!r.ok) throw new Error(r.status);
-    text = await r.text();
-  } catch (e) {
-    alert('Nelze načíst soubor: ' + file);
-    showTopics();
-    return;
+  if (window.OFFLINE_DATA) {
+    text = OFFLINE_DATA.files[topic + '/' + file];
+    if (text == null) {
+      alert('Nelze načíst soubor: ' + file);
+      showTopics();
+      return;
+    }
+  } else {
+    try {
+      const r = await fetch('data/' + encodeURIComponent(topic) + '/' + encodeURIComponent(file), { cache: 'no-cache' });
+      if (!r.ok) throw new Error(r.status);
+      text = await r.text();
+    } catch (e) {
+      alert('Nelze načíst soubor: ' + file);
+      showTopics();
+      return;
+    }
   }
   const rows = parseCSV(text);
   const ex = getEx(topic, file, rows.length);
@@ -632,8 +648,56 @@ function showPics(pics) {
 const PW_HASH = '5dde896887f6754c9b15bfe3a441ae4806df2fde94001311e08bf110622e0bbe';
 
 async function sha256hex(s) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
-  return Array.from(new Uint8Array(buf)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+  if (window.crypto && crypto.subtle) {
+    try {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+      return Array.from(new Uint8Array(buf)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+    } catch (e) { /* fall through to JS implementation */ }
+  }
+  return jsSha256(s);
+}
+
+// plain-JS SHA-256, used when crypto.subtle is unavailable (e.g. some file:// contexts)
+function jsSha256(str) {
+  str = unescape(encodeURIComponent(str));
+  const primes = [];
+  for (let c = 2; primes.length < 64; c++) {
+    if (primes.every(function (p) { return c % p; })) primes.push(c);
+  }
+  const frac32 = function (x) { return Math.floor((x % 1) * 4294967296); };
+  const K = primes.map(function (p) { return frac32(Math.cbrt(p)); });
+  const H = primes.slice(0, 8).map(function (p) { return frac32(Math.sqrt(p)); });
+  const rr = function (x, n) { return (x >>> n) | (x << (32 - n)); };
+  const bytes = [];
+  for (let i = 0; i < str.length; i++) bytes.push(str.charCodeAt(i));
+  const bitLen = bytes.length * 8;
+  bytes.push(0x80);
+  while (bytes.length % 64 !== 56) bytes.push(0);
+  for (let i = 7; i >= 0; i--) bytes.push(Math.floor(bitLen / Math.pow(2, i * 8)) & 0xff);
+  for (let i = 0; i < bytes.length; i += 64) {
+    const w = new Array(64);
+    for (let t = 0; t < 16; t++) {
+      w[t] = (bytes[i + 4 * t] << 24) | (bytes[i + 4 * t + 1] << 16) | (bytes[i + 4 * t + 2] << 8) | bytes[i + 4 * t + 3];
+    }
+    for (let t = 16; t < 64; t++) {
+      const s0 = rr(w[t - 15], 7) ^ rr(w[t - 15], 18) ^ (w[t - 15] >>> 3);
+      const s1 = rr(w[t - 2], 17) ^ rr(w[t - 2], 19) ^ (w[t - 2] >>> 10);
+      w[t] = (w[t - 16] + s0 + w[t - 7] + s1) | 0;
+    }
+    let a = H[0], b = H[1], c = H[2], d = H[3], e = H[4], f = H[5], g = H[6], h = H[7];
+    for (let t = 0; t < 64; t++) {
+      const S1 = rr(e, 6) ^ rr(e, 11) ^ rr(e, 25);
+      const ch = (e & f) ^ (~e & g);
+      const t1 = (h + S1 + ch + K[t] + w[t]) | 0;
+      const S0 = rr(a, 2) ^ rr(a, 13) ^ rr(a, 22);
+      const maj = (a & b) ^ (a & c) ^ (b & c);
+      const t2 = (S0 + maj) | 0;
+      h = g; g = f; f = e; e = (d + t1) | 0; d = c; c = b; b = a; a = (t1 + t2) | 0;
+    }
+    H[0] = (H[0] + a) | 0; H[1] = (H[1] + b) | 0; H[2] = (H[2] + c) | 0; H[3] = (H[3] + d) | 0;
+    H[4] = (H[4] + e) | 0; H[5] = (H[5] + f) | 0; H[6] = (H[6] + g) | 0; H[7] = (H[7] + h) | 0;
+  }
+  return H.map(function (x) { return ('00000000' + (x >>> 0).toString(16)).slice(-8); }).join('');
 }
 
 function showLogin() {
