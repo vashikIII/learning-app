@@ -65,6 +65,7 @@ let pushTimer = null;
 let lastPullAt = 0;
 
 function loadSyncCfg() {
+  if (window.OFFLINE_DATA) return null;
   try {
     const s = JSON.parse(localStorage.getItem(SYNC_KEY));
     if (s && s.token && s.gistId) return s;
@@ -404,7 +405,9 @@ function showStats() {
   if (!logHtml) logHtml = '<tr><td colspan="3">Prázdná historie.</td></tr>';
 
   let syncHtml;
-  if (sync) {
+  if (window.OFFLINE_DATA) {
+    syncHtml = null;  // offline build has no cross-device sync
+  } else if (sync) {
     const last = sync.lastSync ? sync.lastSync.slice(0, 16).replace('T', ' ') : '—';
     syncHtml = '<p>Připojeno ✓ — poslední synchronizace: ' + last + '</p>' +
       '<button id="syncOff">Odpojit</button>';
@@ -416,7 +419,7 @@ function showStats() {
       '<div class="syncrow"><input id="syncToken" placeholder="ghp_…">' +
       '<button id="syncGo">Připojit</button></div>';
   }
-  syncHtml += '<div id="syncMsg" class="pwmsg"></div>';
+  if (syncHtml !== null) syncHtml += '<div id="syncMsg" class="pwmsg"></div>';
 
   const ov = document.createElement('div');
   ov.className = 'overlay';
@@ -426,7 +429,7 @@ function showStats() {
     '<h2>Historie</h2>' +
     '<table class="stats"><tr><th>Kdy</th><th>Cvičení</th><th>Událost</th></tr>' + logHtml + '</table>' +
     '<button id="statsReset" class="danger">Reset stats</button>' +
-    '<h2>Synchronizace</h2>' + syncHtml +
+    (syncHtml === null ? '' : '<h2>Synchronizace</h2>' + syncHtml) +
     '<button class="exit">Exit</button>' +
     '</div>';
   ov.querySelector('.exit').onclick = function () { ov.remove(); };
@@ -726,5 +729,6 @@ function showLogin() {
 
 /* ================= Go ================= */
 
-if (sessionStorage.getItem('flashapp_auth') === '1') init();
+// offline build: local file on the user's own computer — no password, no sync
+if (window.OFFLINE_DATA || sessionStorage.getItem('flashapp_auth') === '1') init();
 else showLogin();
